@@ -1,0 +1,24 @@
+package com.tpg.puzzles.cards.rules;
+
+import com.tpg.puzzles.cards.Card;
+import com.tpg.puzzles.cards.Card.Suit;
+import com.tpg.puzzles.cards.Hand;
+
+import static java.util.stream.Collectors.groupingBy;
+
+public class NCardsSameSuitRule implements PokerRule {
+
+    private final int numberOfCards;
+    private final Suit suit;
+
+    NCardsSameSuitRule(int numberOfCards, Suit suit) {
+
+        this.numberOfCards = numberOfCards;
+        this.suit = suit;
+    }
+
+    public boolean validate(Hand hand) {
+
+        return hand.getCards().stream().collect(groupingBy(Card::getSuit)).size() == 1;
+    }
+}
