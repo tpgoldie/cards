@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.tpg.puzzles.cards.Card.Suit.*;
 import static com.tpg.puzzles.cards.Card.card;
@@ -15,6 +16,7 @@ import static com.tpg.puzzles.cards.Value.FIVE;
 import static com.tpg.puzzles.cards.Value.TWO;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -30,11 +32,12 @@ public class NCardsSameValueRuleTest {
 
     @Test
     public void validate() {
+
         List<Suit> suits = asList(DIAMONDS, HEARTS, CLUBS);
 
-        List<Card> cards  = suits.stream().map(suit -> card(FIVE, suit)).collect(toList());
+        Set<Card> cards  = suits.stream().map(suit -> card(FIVE, suit)).collect(toSet());
 
-        boolean actual = rule.validate(new Hand(new HashSet<>(cards)));
+        boolean actual = rule.validate(new Hand(cards));
 
         assertTrue(actual);
     }
