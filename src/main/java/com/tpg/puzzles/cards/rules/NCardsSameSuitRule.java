@@ -19,6 +19,14 @@ public class NCardsSameSuitRule implements PokerRule {
 
     public boolean validate(Hand hand) {
 
+        return equalNumberOfCards(hand) && sameSuit(hand);
+    }
+
+    private boolean equalNumberOfCards(Hand hand) {
+        return hand.getCards().size() == numberOfCards;
+    }
+
+    private boolean sameSuit(Hand hand) {
         return hand.getCards().stream().collect(groupingBy(Card::getSuit)).size() == 1;
     }
 }
