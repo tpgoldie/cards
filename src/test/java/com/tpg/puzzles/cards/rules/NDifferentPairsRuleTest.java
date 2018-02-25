@@ -29,7 +29,7 @@ public class NDifferentPairsRuleTest {
 
         rule = new NDifferentPairsRule(2);
     }
-    
+
     @Test
     public void invalidConstructionWhenNEqualsZero() {
 
