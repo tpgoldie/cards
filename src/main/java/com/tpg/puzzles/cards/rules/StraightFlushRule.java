@@ -8,18 +8,19 @@ import java.util.Set;
 import static com.tpg.puzzles.cards.Card.SUITS;
 import static java.util.stream.Collectors.toSet;
 
-public class StraightFlushRule implements PokerHandRule {
+public final class StraightFlushRule implements PokerHandRule {
+
+    private static final int NUMBER_OF_CARDS = 5;
 
     private final AndRule theRule;
 
     StraightFlushRule() {
 
-        ConsecutiveCardsRule consecutiveCardsRule = new ConsecutiveCardsRule();
-
         HashSet<HandRule> children = new HashSet<>();
 
-        children.add(new NCardsSameSuitRule(5));
-        children.add(consecutiveCardsRule);
+        children.add(new NCardsSameSuitRule(NUMBER_OF_CARDS));
+
+        children.add(new ConsecutiveCardsRule());
 
 
         theRule = new AndRule(children);

@@ -2,9 +2,11 @@ package com.tpg.puzzles.cards.rules;
 
 import com.tpg.puzzles.cards.PokerHand;
 
-public class FlushRule implements PokerHandRule {
+public final class FlushRule implements PokerHandRule {
 
-    private final NCardsSameSuitRule theRule = new NCardsSameSuitRule(5);
+    private static final int NUMBER_OF_CARDS = 5;
+
+    private final NCardsSameSuitRule theRule = new NCardsSameSuitRule(NUMBER_OF_CARDS);
 
     @Override
     public boolean validate(PokerHand hand) {

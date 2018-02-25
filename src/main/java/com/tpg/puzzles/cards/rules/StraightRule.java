@@ -2,7 +2,7 @@ package com.tpg.puzzles.cards.rules;
 
 import com.tpg.puzzles.cards.PokerHand;
 
-public class StraightRule implements PokerHandRule {
+public final class StraightRule implements PokerHandRule {
 
     private final ConsecutiveCardsRule theRule = new ConsecutiveCardsRule();
 
