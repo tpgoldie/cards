@@ -6,7 +6,7 @@ import com.tpg.puzzles.cards.Hand;
 
 import static java.util.stream.Collectors.groupingBy;
 
-public class NCardsSameSuitRule implements PokerRule {
+public class NCardsSameSuitRule implements HandRule {
 
     private final int numberOfCards;
     private final Suit suit;

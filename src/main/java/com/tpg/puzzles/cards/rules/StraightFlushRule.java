@@ -1,19 +1,14 @@
 package com.tpg.puzzles.cards.rules;
 
-import com.tpg.puzzles.cards.Card;
-import com.tpg.puzzles.cards.Card.Suit;
 import com.tpg.puzzles.cards.Hand;
-import lombok.val;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.tpg.puzzles.cards.Card.SUITS;
-import static com.tpg.puzzles.cards.Card.Suit.*;
-import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toSet;
 
-public class StraightFlushRule implements PokerRule {
+public class StraightFlushRule implements HandRule {
 
     private final AndRule theRule;
 
@@ -21,12 +16,12 @@ public class StraightFlushRule implements PokerRule {
 
         ConsecutiveCardsRule consecutiveCardsRule = new ConsecutiveCardsRule();
 
-        Set<PokerRule> suitRules = SUITS.stream().map(suit -> new NCardsSameSuitRule(5, suit))
+        Set<HandRule> suitRules = SUITS.stream().map(suit -> new NCardsSameSuitRule(5, suit))
                 .collect(toSet());
 
         OrRule orRule = new OrRule(suitRules);
 
-        HashSet<PokerRule> children = new HashSet<>();
+        HashSet<HandRule> children = new HashSet<>();
 
         children.add(orRule);
         children.add(consecutiveCardsRule);

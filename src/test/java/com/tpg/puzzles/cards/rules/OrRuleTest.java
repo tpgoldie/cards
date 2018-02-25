@@ -22,10 +22,10 @@ public class OrRuleTest {
     private static final Hand HAND = new Hand(new HashSet<>(asList(Card.card(TWO, HEARTS))));
 
     @Mock
-    private PokerRule rule1;
+    private HandRule rule1;
 
     @Mock
-    private PokerRule rule2;
+    private HandRule rule2;
 
     private OrRule rule;
 

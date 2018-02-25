@@ -6,11 +6,11 @@ import java.util.Set;
 
 import static java.util.Collections.unmodifiableSet;
 
-public class AndRule implements PokerRule {
+public class AndRule implements HandRule {
 
-    private final Set<PokerRule> rules;
+    private final Set<HandRule> rules;
 
-    public AndRule(Set<PokerRule> rules) {
+    public AndRule(Set<HandRule> rules) {
 
         this.rules = unmodifiableSet(rules);
     }

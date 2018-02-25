@@ -7,9 +7,7 @@ import com.tpg.puzzles.cards.Value;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.stream.Collectors.groupingBy;
-
-public final class NDifferentPairsRule implements PokerRule {
+public final class NDifferentPairsRule extends PokerRule {
 
     private static final int MINIMUM_NUMBER = 2;
 
@@ -25,7 +23,8 @@ public final class NDifferentPairsRule implements PokerRule {
     @Override
     public boolean validate(Hand hand) {
 
-        Map<Value, List<Card>> actual = hand.getCards().stream().collect(groupingBy(Card::getValue));
+        Map<Value, List<Card>> actual = groupByValue(hand);
+
         long result = actual.values().stream().filter(value -> value.size() == 2).count();
 
         return result == numberOfDifferentPairs;

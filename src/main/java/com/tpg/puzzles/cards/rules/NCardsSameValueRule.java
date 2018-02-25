@@ -4,12 +4,10 @@ import com.tpg.puzzles.cards.Card;
 import com.tpg.puzzles.cards.Hand;
 import com.tpg.puzzles.cards.Value;
 
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Map;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
-
-public class NCardsSameValueRule implements PokerRule {
+public class NCardsSameValueRule extends PokerRule {
 
     private final int numberOfCards;
     private final Value value;
@@ -27,7 +25,10 @@ public class NCardsSameValueRule implements PokerRule {
     }
 
     private boolean hasSameValue(Hand hand) {
-        return hand.getCards().stream().collect(groupingBy(Card::getValue)).size() == 1;
+
+        Map<Value, List<Card>> result = groupByValue(hand);
+
+        return result.size() == 1 && result.containsKey(value);
     }
 
     private boolean equalNumberOfCards(Hand hand) {

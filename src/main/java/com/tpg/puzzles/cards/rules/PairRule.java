@@ -7,15 +7,14 @@ import com.tpg.puzzles.cards.Value;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.stream.Collectors.groupingBy;
-
-public class PairRule implements PokerRule {
+public class PairRule extends PokerRule {
 
     @Override
     public boolean validate(Hand hand) {
 
-        Map<Value, List<Card>> actual = hand.getCards().stream().collect(groupingBy(Card::getValue));
-        return actual.values().stream().filter(this::isPair).findFirst().isPresent();
+        Map<Value, List<Card>> actual = groupByValue(hand);
+
+        return actual.values().stream().anyMatch(this::isPair);
     }
 
     private boolean isPair(List<Card> cards) {

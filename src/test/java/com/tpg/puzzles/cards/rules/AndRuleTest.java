@@ -2,7 +2,6 @@ package com.tpg.puzzles.cards.rules;
 
 import com.tpg.puzzles.cards.Card;
 import com.tpg.puzzles.cards.Hand;
-import com.tpg.puzzles.cards.Value;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +23,10 @@ public class AndRuleTest {
     private static final Hand HAND = new Hand(new HashSet<>(asList(Card.card(TWO, HEARTS))));
 
     @Mock
-    private PokerRule rule1;
+    private HandRule rule1;
 
     @Mock
-    private PokerRule rule2;
+    private HandRule rule2;
 
     private AndRule rule;
 

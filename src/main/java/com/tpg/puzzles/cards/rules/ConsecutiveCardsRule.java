@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
-public class ConsecutiveCardsRule implements PokerRule {
+public class ConsecutiveCardsRule implements HandRule {
 
     public boolean validate(Hand hand) {
 
