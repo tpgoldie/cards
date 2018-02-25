@@ -7,13 +7,13 @@ import com.tpg.puzzles.cards.Value;
 import java.util.List;
 import java.util.Map;
 
-public final class NDifferentPairsRule extends PokerRule {
+public final class NDifferentPairsRule implements HandRule, GroupByValue {
 
     private static final int MINIMUM_NUMBER = 2;
 
     private final int numberOfDifferentPairs;
 
-    public NDifferentPairsRule(int numberOfDifferentPairs) {
+    NDifferentPairsRule(int numberOfDifferentPairs) {
 
         assert numberOfDifferentPairs >= MINIMUM_NUMBER;
 

@@ -9,9 +9,9 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.groupingBy;
 
-public abstract class PokerRule implements HandRule {
+public interface GroupByValue {
 
-    protected Map<Value, List<Card>> groupByValue(Hand hand) {
+    default Map<Value, List<Card>> groupByValue(Hand hand) {
 
         return hand.getCards().stream().collect(groupingBy(Card::getValue));
     }

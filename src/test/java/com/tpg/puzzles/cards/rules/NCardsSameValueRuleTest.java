@@ -27,7 +27,7 @@ public class NCardsSameValueRuleTest {
     @Before
     public void setUp() {
 
-        rule = new NCardsSameValueRule(3, FIVE);
+        rule = new NCardsSameValueRule(3);
     }
 
     @Test

@@ -14,6 +14,7 @@ import static com.tpg.puzzles.cards.Card.Suit.DIAMONDS;
 import static com.tpg.puzzles.cards.Card.Suit.HEARTS;
 import static com.tpg.puzzles.cards.Card.Suit.SPADES;
 import static com.tpg.puzzles.cards.Card.card;
+import static com.tpg.puzzles.cards.PokerHand.pokerHand;
 import static com.tpg.puzzles.cards.Value.*;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toSet;
@@ -37,19 +38,21 @@ public class StraightFlushRuleTest {
 
         Set<Card> cards = values.stream().map(value -> card(value, HEARTS)).collect(toSet());
 
-        boolean actual = rule.validate(new Hand(cards));
+        boolean actual = rule.validate(pokerHand(cards));
 
         assertTrue(actual);
     }
 
     @Test
-    public void invalidateNotFiveCards() {
+    public void invalidate() {
 
         List<Value> values = asList(TWO, THREE, FOUR, FIVE);
 
         Set<Card> cards = values.stream().map(value -> card(value, HEARTS)).collect(toSet());
 
-        boolean actual = rule.validate(new Hand(cards));
+        cards.add(card(SEVEN, DIAMONDS));
+
+        boolean actual = rule.validate(pokerHand(cards));
 
         assertFalse(actual);
     }
@@ -61,7 +64,7 @@ public class StraightFlushRuleTest {
 
         Set<Card> cards = values.stream().map(value -> card(value, HEARTS)).collect(toSet());
 
-        boolean actual = rule.validate(new Hand(cards));
+        boolean actual = rule.validate(pokerHand(cards));
 
         assertFalse(actual);
     }
@@ -74,7 +77,7 @@ public class StraightFlushRuleTest {
         Set<Card> cards = values.stream().map(value -> card(value, HEARTS)).collect(toSet());
         cards.add(card(SIX, DIAMONDS));
 
-        boolean actual = rule.validate(new Hand(cards));
+        boolean actual = rule.validate(pokerHand(cards));
 
         assertFalse(actual);
     }

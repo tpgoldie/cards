@@ -7,7 +7,7 @@ import com.tpg.puzzles.cards.Value;
 import java.util.List;
 import java.util.Map;
 
-public class PairRule extends PokerRule {
+public class PairRule implements HandRule, GroupByValue {
 
     @Override
     public boolean validate(Hand hand) {

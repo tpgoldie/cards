@@ -4,29 +4,24 @@ import com.tpg.puzzles.cards.Card;
 import com.tpg.puzzles.cards.Card.Suit;
 import com.tpg.puzzles.cards.Hand;
 
+import java.util.List;
+import java.util.Map;
+
 import static java.util.stream.Collectors.groupingBy;
 
-public class NCardsSameSuitRule implements HandRule {
+public final class NCardsSameSuitRule implements HandRule {
 
     private final int numberOfCards;
-    private final Suit suit;
 
-    NCardsSameSuitRule(int numberOfCards, Suit suit) {
+    NCardsSameSuitRule(int numberOfCards) {
 
         this.numberOfCards = numberOfCards;
-        this.suit = suit;
     }
 
     public boolean validate(Hand hand) {
 
-        return equalNumberOfCards(hand) && sameSuit(hand);
-    }
+        Map<Suit, List<Card>> result = hand.getCards().stream().collect(groupingBy(Card::getSuit));
 
-    private boolean equalNumberOfCards(Hand hand) {
-        return hand.getCards().size() == numberOfCards;
-    }
-
-    private boolean sameSuit(Hand hand) {
-        return hand.getCards().stream().collect(groupingBy(Card::getSuit)).size() == 1;
+        return result.values().stream().anyMatch(value -> value.size() == numberOfCards);
     }
 }

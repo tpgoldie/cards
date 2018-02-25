@@ -26,7 +26,7 @@ public class NCardsSameSuitRuleTest {
     @Before
     public void setUp() {
 
-        rule = new NCardsSameSuitRule(2, HEARTS);
+        rule = new NCardsSameSuitRule(2);
     }
 
     @Test
