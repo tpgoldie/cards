@@ -10,9 +10,8 @@ import java.util.Set;
 
 import static com.tpg.puzzles.cards.Card.Suit.*;
 import static com.tpg.puzzles.cards.Card.card;
-import static com.tpg.puzzles.cards.Value.FOUR;
-import static com.tpg.puzzles.cards.Value.THREE;
-import static com.tpg.puzzles.cards.Value.TWO;
+import static com.tpg.puzzles.cards.PokerHand.pokerHand;
+import static com.tpg.puzzles.cards.Value.*;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -33,10 +32,12 @@ public class PairRuleTest {
         Set<Card> cards = new HashSet<>(asList(
                 card(TWO, HEARTS),
                 card(TWO, DIAMONDS),
-                card(FOUR, SPADES)
+                card(FOUR, SPADES),
+                card(FIVE, SPADES),
+                card(SIX, SPADES)
         ));
 
-        boolean actual = rule.validate(new Hand(cards));
+        boolean actual = rule.validate(pokerHand(cards));
 
         assertTrue(actual);
     }
@@ -47,10 +48,12 @@ public class PairRuleTest {
         Set<Card> cards = new HashSet<>(asList(
                 card(TWO, HEARTS),
                 card(THREE, DIAMONDS),
-                card(FOUR, SPADES)
+                card(FOUR, SPADES),
+                card(FIVE, SPADES),
+                card(SIX, CLUBS)
         ));
 
-        boolean actual = rule.validate(new Hand(cards));
+        boolean actual = rule.validate(pokerHand(cards));
 
         assertFalse(actual);
     }

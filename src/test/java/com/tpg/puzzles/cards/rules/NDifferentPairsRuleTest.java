@@ -29,15 +29,7 @@ public class NDifferentPairsRuleTest {
 
         rule = new NDifferentPairsRule(2);
     }
-
-    @Test
-    public void invalidConstructionWhenPositiveNLessThanMinimumValue() {
-
-        expectedException.expect(AssertionError.class);
-
-        new NDifferentPairsRule(1);
-    }
-
+    
     @Test
     public void invalidConstructionWhenNEqualsZero() {
 

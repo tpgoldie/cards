@@ -9,7 +9,7 @@ import java.util.Map;
 
 public final class NDifferentPairsRule implements HandRule, GroupByValue {
 
-    private static final int MINIMUM_NUMBER = 2;
+    private static final int MINIMUM_NUMBER = 1;
 
     private final int numberOfDifferentPairs;
 

@@ -16,7 +16,7 @@ public final class FullHouseRule implements PokerHandRule, GroupByValue {
         Set<HandRule> rules = new HashSet<>();
 
         rules.add(new NCardsSameValueRule(NUMBER_OF_CARDS));
-        rules.add(new PairRule());
+        rules.add(new NDifferentPairsRule(1));
 
         theRule = new AndRule(rules);
     }

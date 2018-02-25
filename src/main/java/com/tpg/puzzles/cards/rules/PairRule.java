@@ -1,23 +1,16 @@
 package com.tpg.puzzles.cards.rules;
 
-import com.tpg.puzzles.cards.Card;
-import com.tpg.puzzles.cards.Hand;
-import com.tpg.puzzles.cards.Value;
+import com.tpg.puzzles.cards.PokerHand;
 
-import java.util.List;
-import java.util.Map;
+public class PairRule implements PokerHandRule {
 
-public class PairRule implements HandRule, GroupByValue {
+    private static final int NUMBER_OF_PAIRS = 1;
+
+    private final NDifferentPairsRule theRule = new NDifferentPairsRule(NUMBER_OF_PAIRS);
 
     @Override
-    public boolean validate(Hand hand) {
+    public boolean validate(PokerHand hand) {
 
-        Map<Value, List<Card>> actual = groupByValue(hand);
-
-        return actual.values().stream().anyMatch(this::isPair);
-    }
-
-    private boolean isPair(List<Card> cards) {
-        return cards.size() == 2;
+        return theRule.validate(hand);
     }
 }
